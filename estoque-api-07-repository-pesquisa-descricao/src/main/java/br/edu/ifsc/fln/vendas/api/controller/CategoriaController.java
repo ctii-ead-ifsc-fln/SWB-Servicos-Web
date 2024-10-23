@@ -28,12 +28,16 @@ public class CategoriaController {
 	// com o corpo da mensagem.
 	@GetMapping("/categorias/{id}")
 	public ResponseEntity<Categoria> pesquisar(@PathVariable Integer id) {
-		Optional<Categoria> categoria = categoriaRepository.findById(id);
-		if (categoria.isPresent()) {
-			return ResponseEntity.ok(categoria.get());
-		}
-		
-		return ResponseEntity.notFound().build();
+//		Optional<Categoria> categoria = categoriaRepository.findById(id);
+//		if (categoria.isPresent()) {
+//			return ResponseEntity.ok(categoria.get());
+//		}
+//		
+//		return ResponseEntity.notFound().build();
+		//otimizando o retorno com method reference (poderia ser utilizado lambda também)
+		return categoriaRepository.findById(id)
+				.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/categorias/descricao/{descricao}")
