@@ -70,8 +70,8 @@ public class Estoque {
     	if (this.eSituacao != ESituacao.ATIVO) {
             throw new IllegalStateException("Estoque inativo ou bloqueado, retirada não permitida.");
         }
-        if (this.quantidade - quantidade < this.quantidadeMinima) {
-            throw new Exception("Quantidade abaixo do mínimo permitido no estoque");
+        if (this.quantidade - quantidade < 0) {
+            throw new Exception("Quantidade insuficiente no estoque");
         }
         this.quantidade -= quantidade;
     }
