@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Produto {
 	private Categoria categoria;
 	@ManyToOne
 	@JoinColumn(name = "id_fornecedor")
-	@JsonIgnore
+	@JsonIgnoreProperties("produtos")
 	private Fornecedor fornecedor;
 	
 	public Integer getId() {

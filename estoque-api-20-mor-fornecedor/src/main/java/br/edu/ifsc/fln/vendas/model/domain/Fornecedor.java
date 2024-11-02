@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -21,8 +23,8 @@ public class Fornecedor {
 	private String email;
 	private String fone;
 	
-	@OneToMany(mappedBy = "fornecedor",fetch = FetchType.LAZY)
-	//@JsonIgnore
+	@OneToMany(mappedBy="fornecedor")
+	@JsonIgnoreProperties("fornecedor")
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public int getId() {
