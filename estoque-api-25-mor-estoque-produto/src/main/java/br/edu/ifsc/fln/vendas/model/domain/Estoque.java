@@ -57,13 +57,19 @@ public class Estoque {
 	}
 	
     public void repor(int quantidade) throws Exception {
-        if (this.quantidade + quantidade > this.quantidadeMaxima) {
+    	if (this.eSituacao != ESituacao.ATIVO) {
+            throw new IllegalStateException("Estoque inativo ou bloqueado, retirada não permitida.");
+        }
+    	if (this.quantidade + quantidade > this.quantidadeMaxima) {
             throw new Exception("Quantidade excede o máximo permitido no estoque");
         }
         this.quantidade += quantidade;
     }
 
     public void retirar(int quantidade) throws Exception {
+    	if (this.eSituacao != ESituacao.ATIVO) {
+            throw new IllegalStateException("Estoque inativo ou bloqueado, retirada não permitida.");
+        }
         if (this.quantidade - quantidade < this.quantidadeMinima) {
             throw new Exception("Quantidade abaixo do mínimo permitido no estoque");
         }
