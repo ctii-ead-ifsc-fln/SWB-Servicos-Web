@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifsc.fln.vendas.model.domain.Categoria;
+import br.edu.ifsc.fln.vendas.model.domain.Fornecedor;
 import br.edu.ifsc.fln.vendas.model.domain.Produto;
 import br.edu.ifsc.fln.vendas.repository.CategoriaRepository;
+import br.edu.ifsc.fln.vendas.repository.FornecedorRepository;
 import br.edu.ifsc.fln.vendas.repository.ProdutoRepository;
 
 @RestController //Componente Spring com semântica de controlador
@@ -24,10 +26,14 @@ public class ProdutoController {
 
 	private ProdutoRepository produtoRepository;
 	private CategoriaRepository categoriaRepository;
+	private FornecedorRepository fornecedorRepository;
 	
-	public ProdutoController(ProdutoRepository produtoRepository, CategoriaRepository categoriaRepository) {
+	public ProdutoController(ProdutoRepository produtoRepository, 
+			                 CategoriaRepository categoriaRepository,
+			                 FornecedorRepository fornecedorRepository) {
 		this.produtoRepository = produtoRepository;
 		this.categoriaRepository = categoriaRepository;
+		this.fornecedorRepository = fornecedorRepository;
 	}
 	
 	@GetMapping("/produtos")
@@ -51,6 +57,8 @@ public class ProdutoController {
         // associado a produto.
 		Optional<Categoria> c = categoriaRepository.findById(produto.getCategoria().getId());
 		produto.setCategoria(c.get());
+		Optional<Fornecedor> f = fornecedorRepository.findById(produto.getFornecedor().getId());
+		produto.setFornecedor(f.get());
 		return produto;
 	}
 	
@@ -65,6 +73,8 @@ public class ProdutoController {
 			Produto entidadeAtualizada = produtoRepository.save(produto);
 			Optional<Categoria> c = categoriaRepository.findById(entidadeAtualizada.getCategoria().getId());
 			entidadeAtualizada.setCategoria(c.get());
+			Optional<Fornecedor> f = fornecedorRepository.findById(entidadeAtualizada.getFornecedor().getId());
+			entidadeAtualizada.setFornecedor(f.get());			
 			return ResponseEntity.ok(entidadeAtualizada);
 		}
 	}	
