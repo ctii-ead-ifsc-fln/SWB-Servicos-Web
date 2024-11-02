@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifsc.fln.vendas.model.domain.Fornecedor;
-import br.edu.ifsc.fln.vendas.model.domain.Produto;
 import br.edu.ifsc.fln.vendas.repository.FornecedorRepository;
 
 @RestController
