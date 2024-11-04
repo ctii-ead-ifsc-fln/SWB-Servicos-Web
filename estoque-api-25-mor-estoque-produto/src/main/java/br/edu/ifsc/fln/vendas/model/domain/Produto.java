@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Produto {
@@ -33,18 +32,18 @@ public class Produto {
 	@JsonIgnoreProperties("produtos")
 	private Fornecedor fornecedor;
 	
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
+	@OneToOne(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Estoque estoque;	
 
     public Produto() {
-        this.estoque = new Estoque(this); // Associação por composição
+        this.estoque = new Estoque(); // Associação por composição
+        this.estoque.setProduto(this);
     }
 
     public Estoque getEstoque() {
         return estoque;
     }
-	
+
 	public Integer getId() {
 		return id;
 	}
