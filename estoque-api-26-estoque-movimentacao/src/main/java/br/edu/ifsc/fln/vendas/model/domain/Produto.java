@@ -33,7 +33,8 @@ public class Produto {
 	private Fornecedor fornecedor;
 	
 	@OneToOne(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private Estoque estoque;	
+    @JsonIgnoreProperties("produto")
+	private Estoque estoque;	
 
     public Produto() {
         this.estoque = new Estoque(); // Associação por composição

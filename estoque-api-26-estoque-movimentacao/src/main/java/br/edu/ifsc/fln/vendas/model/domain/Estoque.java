@@ -1,4 +1,7 @@
+
 package br.edu.ifsc.fln.vendas.model.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +29,7 @@ public class Estoque {
     @OneToOne
     @MapsId // Garante que o id do Estoque seja igual ao id do Produto
     @JoinColumn(name = "id_produto")
+    @JsonIgnoreProperties("estoque")
     private Produto produto;
 	
     // Método para associar o Produto ao Estoque
