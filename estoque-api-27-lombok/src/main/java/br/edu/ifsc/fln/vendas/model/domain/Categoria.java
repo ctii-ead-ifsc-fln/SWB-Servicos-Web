@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+//@EqualsAndHashCode(of = "id")
 @Entity 
 public class Categoria {
 	
