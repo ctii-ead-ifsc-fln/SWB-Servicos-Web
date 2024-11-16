@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,8 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Configuration
-@Import(SecurityAutoConfiguration.class)
-@SpringBootApplication(scanBasePackages = "br.edu.ifsc.fln.vendas.security")
 public class SecurityConfig {
 
 	private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
@@ -34,7 +33,10 @@ public class SecurityConfig {
                 .requestMatchers("/produtos/**").authenticated() // Restringe acesso aos endpoints
                 .anyRequest().permitAll() // Permite outras rotas
             )
-            .httpBasic(httpBasic -> {}); // Configura autenticação básica
+            .httpBasic(httpBasic -> {}) // Configura autenticação básica
+         // Configuração de sessão (stateless é melhor para APIs)
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
         System.out.println("Security config filter was loaded...");
         return http.build();        
     }
