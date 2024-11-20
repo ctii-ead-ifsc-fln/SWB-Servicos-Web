@@ -10,6 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Exceção: Aceitar .jar em uma pasta específica
+!D:\OneDrive-IFSC\OneDrive - Instituto Federal de Santa Catarina\marcosap\programas\eclipseprojects\ebook_ctii\SW\SWB-Servicos-Web\estoque-api-distribuicao-back-e-front-final/**/*.jar
+
 # Package Files #
 *.jar
 *.war
