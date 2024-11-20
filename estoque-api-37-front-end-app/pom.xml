@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.edu.ifsc.fln</groupId>
 	<artifactId>estoque-api-fron-end-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>estoque-api-fron-end-app</name>
 	<description>front-end para cadastro de fornecedores</description>
 	<url/>

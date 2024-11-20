@@ -46,26 +46,27 @@ public class ProdutoController {
 	public List<Produto> listar() {
 		return produtoRepository.findAll();
 	}
-	@Operation(summary = "Busca um produto pelo ID", description = "Retorna o produto DTO com o ID fornecido")
+	@Operation(summary = "Busca um produto pelo ID", description = "Retorna o produto com o ID fornecido")
     @ApiResponse(responseCode = "200", description = "Produto encontrado")
     @ApiResponse(responseCode = "404", description = "Produto não encontrado")
 	@GetMapping("/{id}")
-	public ResponseEntity<ProdutoDTO> pesquisar(@PathVariable Integer id) {
+	public ResponseEntity<Produto> pesquisar(@PathVariable Integer id) {
 		return produtoRepository.findById(id)
-				.map(produto -> modelMapper.map(produto, ProdutoDTO.class))
-//{
-//					var produtoDTO = new ProdutoDTO(//);
-//					produtoDTO.setId(produto.getId());
-//					produtoDTO.setNome(produto.getNome());
-//					produtoDTO.setDescricaoProduto(produto.getDescricao());
-//					produtoDTO.setPreco(produto.getPreco());
-//					produtoDTO.setDescricaoCategoria(produto.getCategoria().getDescricao());
-//					ret
-//urn prodmodelMapper.maputoDTO;
-//				})
 				.map(ResponseEntity::ok) 
 				.orElse(ResponseEntity.notFound().build());
 	}
+
+	@Operation(summary = "Busca um produto pelo ID", description = "Retorna o produto DTO com o ID fornecido")
+    @ApiResponse(responseCode = "200", description = "Produto encontrado")
+    @ApiResponse(responseCode = "404", description = "Produto não encontrado")
+	@GetMapping("/dto/{id}")
+	public ResponseEntity<ProdutoDTO> pesquisarDTO(@PathVariable Integer id) {
+		return produtoRepository.findById(id)
+				.map(produto -> modelMapper.map(produto, ProdutoDTO.class))
+				.map(ResponseEntity::ok) 
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
 	
 	@Operation(summary = "Insere um novo produto", description = "Adiciona um novo produto ao sistema e retorna os detalhes do produto criado.")
 	@ApiResponse(responseCode = "201", description = "Produto criado com sucesso", 
