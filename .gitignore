@@ -10,8 +10,6 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Exceção: Aceitar .jar em uma pasta específica
-!D:\OneDrive-IFSC\OneDrive - Instituto Federal de Santa Catarina\marcosap\programas\eclipseprojects\ebook_ctii\SW\SWB-Servicos-Web\estoque-api-distribuicao-back-e-front-final/**/*.jar
 
 # Package Files #
 *.jar
@@ -21,6 +19,10 @@
 *.zip
 *.tar.gz
 *.rar
+
+# Exceção: Aceitar .jar em uma pasta específica
+!estoque-api-distribuicao-back-e-front-final/*.jar
+
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
