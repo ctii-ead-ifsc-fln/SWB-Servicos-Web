@@ -1,5 +1,7 @@
+console.log('API_BASE_URL fornecedores.js:', API_BASE_URL);
 document.addEventListener("DOMContentLoaded", function() {
-    axios.get('http://localhost:8081/fornecedores')  // URL da sua API
+    //axios.get('http://localhost:8081/fornecedores')  // URL da sua API
+    axios.get(`${API_BASE_URL}/fornecedores`)
         .then(function (response) {
 			console.log(response.data);  // Verifique o que está sendo retornado
             const fornecedores = response.data;
@@ -27,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function deleteFornecedor(id) {
     if (confirm('Você tem certeza que deseja excluir este fornecedor?')) {
-        axios.delete(`http://localhost:8081/fornecedores/${id}`)
+        //axios.delete(`http://localhost:8081/fornecedores/${id}`)
+        axios.delete(`${API_BASE_URL}/fornecedores/${id}`)
             .then(response => {
                 alert('Fornecedor excluído com sucesso');
                 window.location.reload();

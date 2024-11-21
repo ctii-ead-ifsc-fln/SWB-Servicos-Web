@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial - Estoque de Produtos</title>
+    
+    <!-- Configuração dinâmica do domínio da API -->
+<!-- <script>
+	    window.API_BASE_URL = new URLSearchParams(window.location.search).get('API_BASE_URL') || 'http://localhost:8082';
+	</script>
+-->
+	<script>
+	    const urlApiBase = new URLSearchParams(window.location.search).get('API_BASE_URL');
+	    if (urlApiBase) {
+	        window.API_BASE_URL = urlApiBase;
+	        localStorage.setItem('API_BASE_URL', urlApiBase);
+	    } else {
+	        window.API_BASE_URL = localStorage.getItem('API_BASE_URL') || 'http://localhost:8081';
+	    }
+	    console.log('API_BASE_URL:', window.API_BASE_URL);
+	</script>	
+    <!-- Outros arquivos de estilo ou scripts -->    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -14,5 +31,6 @@
             <a href="fornecedores.html" class="btn btn-primary btn-lg">Visualizar Fornecedores</a>
         </div>
     </div>
+    <script src="config.js"></script>
 </body>
 </html>
