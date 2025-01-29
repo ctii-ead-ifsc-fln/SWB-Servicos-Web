@@ -46,3 +46,20 @@ create table estoque(
 alter table estoque add constraint fk_estoque_produto 
     foreign key (id_produto) 
     references produto(id) on update cascade on delete cascade;
+    
+/*OPCIONALMENTE EXECUTAR O SCRIPT A SEGUIR PARA INSERIR ALGUNS DADOS NO BANCO */
+insert into categoria (descricao) values ('ELETRÔNICO');
+insert into categoria (descricao) values ('ELETRODOMÉSTICO');
+insert into categoria (descricao) values ('UTENSÍLIOS');
+ 
+insert into fornecedor (nome, email, fone) values ('ELETRO BRASIL', 'CONTATO@ELETROBRASIL.COM', '988229922');
+insert into fornecedor (nome, email, fone) values ('UTENSILIOS SC', 'CONTATO@UTENSILIOSSC.COM', '32223434');
+insert into fornecedor (nome, email, fone) values ('TEM MAIS', 'CONTATO@TEMMAIS.COM.BR', '32240000');
+insert into fornecedor (nome, email, fone) values ('AMERICA', 'CONTATO@AMERICA.COM', '999881234');
+
+insert into produto (nome, descricao, preco, id_categoria, id_fornecedor) values('NOTEBOOK', 'ULTRABOOK', 2100.00, 1, 1);
+insert into estoque (id_produto, quantidade, qtd_minima, qtd_maxima, situacao) values(1, 30, 5, 100, 'ATIVO');  
+insert into produto (nome, descricao, preco, id_categoria, id_fornecedor) values('GELADEIRA', 'GELADEIRA FROST FREE', 3500.00, 2, 4);
+insert into estoque (id_produto, quantidade, qtd_minima, qtd_maxima, situacao) values(2, 15, 3, 200, 'ATIVO');
+insert into produto (nome, descricao, preco, id_categoria, id_fornecedor) values('PANELA', 'PANELA DE PRESSÃO', 339.00, 3, 3);
+insert into estoque (id_produto, quantidade, qtd_minima, qtd_maxima, situacao) values(3, 40, 10, 400, 'ATIVO');  
