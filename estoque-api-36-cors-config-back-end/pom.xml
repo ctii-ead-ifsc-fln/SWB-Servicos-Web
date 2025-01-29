@@ -95,6 +95,14 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
+						<exclude>
+							<groupId>org.flywaydb</groupId>
+							<artifactId>flyway-core</artifactId>
+						</exclude>
+						<exclude>
+							<groupId>org.flywaydb</groupId>
+							<artifactId>flyway-mysql</artifactId>
+						</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

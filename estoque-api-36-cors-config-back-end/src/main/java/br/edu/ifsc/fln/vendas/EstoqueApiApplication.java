@@ -21,12 +21,13 @@ public class EstoqueApiApplication {
 	 * https://stackoverflow.com/questions/37462550/flyway-repair-with-spring-boot
 	 * @return
 	 */
-    @Bean
-    public static FlywayMigrationStrategy cleanMigrateStrategy() {
-        return flyway -> {
-            flyway.repair();
-            flyway.migrate();
-        };
-    }
+//    @Bean
+//    public static FlywayMigrationStrategy cleanMigrateStrategy() {
+//        return flyway -> {
+//            flyway.repair();
+//            flyway.migrate();
+//        };
+//    }
+	//o método cleanMigrateStrategy foi excluído para a distribuição final
 
 }
