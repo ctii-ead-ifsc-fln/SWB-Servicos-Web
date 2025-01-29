@@ -41,7 +41,7 @@ create table estoque(
     qtd_maxima int default 0,
     situacao enum('ATIVO', 'INATIVO', 'BLOQUEADO') not null default 'ATIVO',
     primary key (id_produto)
-) engine innodb;
+);
 
 alter table estoque add constraint fk_estoque_produto 
     foreign key (id_produto) 
